@@ -9,7 +9,7 @@ const useData = () => {
     const getData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch('/data.json');
+        const res = await fetch('react-charts/data.json');
         if (!res.ok) {
           throw new Error('Error fetching data');
         }
