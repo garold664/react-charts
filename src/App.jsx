@@ -91,10 +91,9 @@ function App() {
       {
         label: 'Dataset 1',
         data: filteredData.map((d) => d.value),
-        // backgroundColor: 'rgba(255, 99, 132, 0.2)',
         backgroundColor: Object.values(categoryColors),
         hoverOffset: 1,
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'rgb(22, 7, 86)',
         borderWidth: 3,
         categories: filteredData.map((d) => d.category),
       },

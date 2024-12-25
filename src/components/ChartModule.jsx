@@ -32,6 +32,13 @@ export default function ChartModule({
 }) {
   // console.log(data);
 
+  let title = 'Линейный график';
+  if (chartType === 'bar') {
+    title = 'Столбчатая диаграмма';
+  } else if (chartType === 'pie') {
+    title = 'Круговая диаграмма';
+  }
+
   const options = {
     responsive: true,
     plugins: {
@@ -40,7 +47,7 @@ export default function ChartModule({
       },
       title: {
         display: true,
-        text: 'Линейный график',
+        text: title,
       },
       tooltip: {
         callbacks: {
@@ -55,11 +62,7 @@ export default function ChartModule({
       customLabels: {
         id: 'categoryLabels',
         afterDatasetsDraw(chart, args, options) {
-          const {
-            ctx,
-            chartArea: { top, bottom, left, right },
-            scales,
-          } = chart;
+          const { ctx } = chart;
           const dataset = chart.data.datasets[0];
           const meta = chart.getDatasetMeta(0);
 
@@ -67,7 +70,6 @@ export default function ChartModule({
           meta.data.forEach((dataPoint, index) => {
             const { x, y } = dataPoint.tooltipPosition();
             const category = dataset.categories[index];
-            // console.log(dataset.categories);
 
             ctx.font = '25px Arial';
             ctx.fillStyle = categoryColors[category] || 'black';
