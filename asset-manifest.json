@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-charts/static/css/main.d780e7c2.css",
-    "main.js": "/react-charts/static/js/main.b14bc783.js",
-    "static/js/488.2361502b.chunk.js": "/react-charts/static/js/488.2361502b.chunk.js",
+    "main.css": "/react-charts/static/css/main.8bfc1804.css",
+    "main.js": "/react-charts/static/js/main.05d71041.js",
+    "static/js/488.8635006e.chunk.js": "/react-charts/static/js/488.8635006e.chunk.js",
     "index.html": "/react-charts/index.html",
-    "main.d780e7c2.css.map": "/react-charts/static/css/main.d780e7c2.css.map",
-    "main.b14bc783.js.map": "/react-charts/static/js/main.b14bc783.js.map",
-    "488.2361502b.chunk.js.map": "/react-charts/static/js/488.2361502b.chunk.js.map"
+    "main.8bfc1804.css.map": "/react-charts/static/css/main.8bfc1804.css.map",
+    "main.05d71041.js.map": "/react-charts/static/js/main.05d71041.js.map",
+    "488.8635006e.chunk.js.map": "/react-charts/static/js/488.8635006e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d780e7c2.css",
-    "static/js/main.b14bc783.js"
+    "static/css/main.8bfc1804.css",
+    "static/js/main.05d71041.js"
   ]
 }
