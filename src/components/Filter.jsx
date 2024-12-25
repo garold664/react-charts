@@ -9,22 +9,18 @@ export default function Filter({ options, data, values, setValues, type }) {
     }
   };
   return (
-    <div>
-      {/* {[...new Set(data.map((d) => d[type]).sort())].map((category) => ( */}
+    <div className="filters">
       {options.map((category) => {
-        console.log(category.checked);
         return (
-          <span key={`cat-${category.name}`}>
-            <label htmlFor={`cat-${category.name}`}>{category.name}</label>
+          <label key={`cat-${category.name}`} className="filter-item">
+            <span>{category.name}</span>
             <input
               type="checkbox"
               value={category.name}
-              id={`cat-${category.name}`}
-              // checked={values.includes(category)}
               checked={category.checked}
               onChange={updatedSelected}
             />
-          </span>
+          </label>
         );
       })}
     </div>

@@ -24,12 +24,10 @@ function App() {
 
   useEffect(() => {
     setFilteredData(data);
-    // setCategories(data.map((d) => d.category));
-    // setDates(data.map((d) => d.date));
+
     const uniqueCategories = [...new Set(data.map((d) => d.category))].map(
       (c) => ({ name: c, checked: true })
     );
-    // const uniqueDates = [...new Set(data.map((d) => d.date))];
     const uniqueDates = [...new Set(data.map((d) => d.date))].map((d) => ({
       name: d,
       checked: true,
@@ -108,18 +106,24 @@ function App() {
   ) : error ? (
     'Error'
   ) : (
-    <ChartModule data={transformedData} categoryColors />
+    <div>
+      <ChartModule data={transformedData} categoryColors chartType="line" />
+      <ChartModule data={transformedData} categoryColors chartType="bar" />
+      <ChartModule data={transformedData} categoryColors chartType="pie" />
+    </div>
   );
 
   return (
     <div className="App">
       <div className="header">
-        <h2>Категории</h2>
-        {categoryFilter}
-        <h2>Значения</h2>
-        {datesFilter}
+        <div className="container">
+          <h2>Категории:</h2>
+          {categoryFilter}
+          <h2>Даты:</h2>
+          {datesFilter}
+        </div>
       </div>
-      {content}
+      <div className="container">{content}</div>
     </div>
   );
 }
