@@ -41,6 +41,7 @@ export default function ChartModule({
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -72,9 +73,9 @@ export default function ChartModule({
             const category = dataset.categories[index];
 
             ctx.font = '25px Arial';
-            ctx.fillStyle = categoryColors[category] || 'black';
+            ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
-            ctx.fillText(category, x, y - 10); // Positioning above the point
+            ctx.fillText(category, x, y - 20); // Positioning above the point
           });
           ctx.restore();
         },
@@ -83,10 +84,10 @@ export default function ChartModule({
   };
 
   return (
-    <div>
+    <>
       <h2>Chart</h2>
       {options && (
-        <>
+        <div className="chart-container">
           {chartType === 'line' && (
             <Line
               data={data}
@@ -108,8 +109,8 @@ export default function ChartModule({
               plugins={[options.plugins.customLabels]}
             />
           )}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }

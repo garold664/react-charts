@@ -2,12 +2,14 @@ import React from 'react';
 
 export default function Filter({ options, data, values, setValues, type }) {
   const updatedSelected = (e) => {
+    console.log(e.target.value);
     if (e.target.checked) {
-      setValues([...values, e.target.value]);
+      setValues([...new Set([...values, e.target.value])].sort());
     } else {
       setValues(values.filter((c) => c !== e.target.value));
     }
   };
+  // console.log(values);
   return (
     <div className="filters">
       {options.map((category) => {
