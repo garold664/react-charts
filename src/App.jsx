@@ -3,6 +3,7 @@ import './App.css';
 import ChartModule from './components/ChartModule';
 import DatesRangePicker from './components/DatesRangePicker';
 import Filter from './components/Filter';
+import Sorting from './components/Sorting';
 import useData from './hooks/useData';
 
 const categoryColors = {
@@ -22,6 +23,7 @@ function App() {
   const [selectedCategories, setSelectedCategories] = useState(categories);
   const [dates, setDates] = useState([]);
   const [selectedDates, setSelectedDates] = useState(dates);
+  const [sort, setSort] = useState('');
 
   useEffect(() => {
     setFilteredData(data);
@@ -41,13 +43,27 @@ function App() {
 
   useEffect(() => {
     setFilteredData(
-      data.filter(
-        (entry) =>
-          selectedDates.includes(entry.date) &&
-          selectedCategories.includes(entry.category)
-      )
+      data
+        .filter(
+          (entry) =>
+            selectedDates.includes(entry.date) &&
+            selectedCategories.includes(entry.category)
+        )
+        .sort((a, b) => {
+          if (sort === 'asc') {
+            if (a.category > b.category) return 1;
+            if (a.category < b.category) return -1;
+            return 0;
+          }
+          if (sort === 'desc') {
+            if (a.category > b.category) return -1;
+            if (a.category < b.category) return 1;
+            return 0;
+          }
+          return 0;
+        })
     );
-  }, [data, selectedCategories, selectedDates]);
+  }, [data, selectedCategories, selectedDates, sort]);
 
   useEffect(() => {
     setCategories(
@@ -128,6 +144,7 @@ function App() {
           dates={data.map((d) => d.date)}
           setSelectedDates={setSelectedDates}
         />
+        <Sorting setSort={setSort} />
         {content}
       </div>
     </div>

@@ -29,6 +29,7 @@ export default function DatesRangePicker({ dates, setSelectedDates }) {
         return result;
       });
     }
+    // eslint-disable-next-line
   }, [startDate, endDate, setSelectedDates]);
   return (
     <>
