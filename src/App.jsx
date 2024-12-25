@@ -27,6 +27,7 @@ function App() {
         borderWidth: 3,
       },
     ],
+    categories,
   };
 
   const content = isLoading ? (

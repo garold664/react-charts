@@ -21,20 +21,29 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Линейный график',
-    },
-  },
-};
-
 export default function LineChart({ data }) {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Линейный график',
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const index = context.dataIndex;
+            const category = data.categories[index];
+            const value = context.raw;
+            return `Category: ${category}, Value: ${value}`;
+          },
+        },
+      },
+    },
+  };
   return (
     <div>
       <h2>Chart</h2>
