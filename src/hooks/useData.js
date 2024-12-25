@@ -28,10 +28,6 @@ const useData = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    // console.log(data);
-  }, [data]);
-
   return [data, isLoading, error];
 };
 export default useData;

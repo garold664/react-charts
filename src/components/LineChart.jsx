@@ -31,7 +31,7 @@ const categoryColors = {
 };
 
 export default function LineChart({ data }) {
-  console.log(data);
+  // console.log(data);
 
   const options = {
     responsive: true,
@@ -68,7 +68,7 @@ export default function LineChart({ data }) {
           meta.data.forEach((dataPoint, index) => {
             const { x, y } = dataPoint.tooltipPosition();
             const category = dataset.categories[index];
-            console.log(dataset.categories);
+            // console.log(dataset.categories);
 
             ctx.font = '25px Arial';
             ctx.fillStyle = categoryColors[category] || 'black';
