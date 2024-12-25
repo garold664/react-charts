@@ -24,7 +24,7 @@ export default function DatesRangePicker({ dates, setSelectedDates }) {
 
       setSelectedDates(() => {
         const result = transformedDates
-          .filter((date) => date >= start && date <= end + ONE_DAY)
+          .filter((date) => date >= start + ONE_DAY && date <= end + ONE_DAY)
           .map((date) => new Date(date).toISOString().split('T')[0]);
         return result;
       });
