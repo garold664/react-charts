@@ -25,17 +25,19 @@ function App() {
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 3,
+        categories: categories,
       },
     ],
-    categories,
   };
+
+  // console.log(transformedData);
 
   const content = isLoading ? (
     'Loading...'
   ) : error ? (
     'Error'
   ) : (
-    <LineChart data={transformedData} />
+    <LineChart data={transformedData} categories={categories} />
   );
   return <div className="App">{content}</div>;
 }
