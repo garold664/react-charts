@@ -1,4 +1,6 @@
 import {
+  ArcElement,
+  BarElement,
   CategoryScale,
   Chart as ChartJS,
   Legend,
@@ -9,28 +11,25 @@ import {
   Tooltip,
 } from 'chart.js';
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
+  BarElement,
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
-const categoryColors = {
-  A: 'rgba(255, 99, 132, 1)',
-  B: 'rgba(54, 162, 235, 1)',
-  C: 'rgba(75, 192, 192, 1)',
-  D: 'rgba(255, 206, 86, 1)',
-  E: 'rgba(153, 102, 255, 1)',
-  F: 'rgba(255, 159, 64, 1)',
-  G: 'rgba(199, 199, 199, 1)',
-};
 
-export default function LineChart({ data }) {
+export default function ChartModule({
+  chartType = 'line',
+  data,
+  categoryColors,
+}) {
   // console.log(data);
 
   const options = {
@@ -85,11 +84,29 @@ export default function LineChart({ data }) {
     <div>
       <h2>Chart</h2>
       {options && (
-        <Line
-          data={data}
-          options={options}
-          plugins={[options.plugins.customLabels]}
-        />
+        <>
+          {chartType === 'line' && (
+            <Line
+              data={data}
+              options={options}
+              plugins={[options.plugins.customLabels]}
+            />
+          )}
+          {chartType === 'bar' && (
+            <Bar
+              data={data}
+              options={options}
+              plugins={[options.plugins.customLabels]}
+            />
+          )}
+          {chartType === 'pie' && (
+            <Pie
+              data={data}
+              options={options}
+              plugins={[options.plugins.customLabels]}
+            />
+          )}
+        </>
       )}
     </div>
   );

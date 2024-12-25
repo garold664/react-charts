@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.header {
+  position: sticky;
+  top: 0px;
+  background-color: rgba(130, 127, 138, 0.7);
+  padding: 10px;
+  backdrop-filter: blur(5px);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
