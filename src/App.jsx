@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import ChartModule from './components/ChartModule';
+import DatesRangePicker from './components/DatesRangePicker';
 import Filter from './components/Filter';
 import useData from './hooks/useData';
 
@@ -122,7 +123,13 @@ function App() {
           {datesFilter}
         </div>
       </div>
-      <div className="container">{content}</div>
+      <div className="container">
+        <DatesRangePicker
+          dates={data.map((d) => d.date)}
+          setSelectedDates={setSelectedDates}
+        />
+        {content}
+      </div>
     </div>
   );
 }
