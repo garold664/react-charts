@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Filter from './components/Filter';
 import LineChart from './components/LineChart';
 import useData from './hooks/useData';
 
@@ -22,36 +23,16 @@ function App() {
     setDates(filteredData.map((d) => d.date));
   }, [filteredData]);
 
-  useEffect(() => {
-    setFilteredData(
-      data.filter((entry) => categories.includes(entry.category))
-    );
-  }, [categories, data]);
-
   // console.log(categories);
-  const categoryFilter = (
-    <div>
-      {[...new Set(data.map((d) => d.category).sort())].map((category) => (
-        <span key={`cat-${category}`}>
-          <label htmlFor={`cat-${category}`}>{category}</label>
-          <input
-            type="checkbox"
-            value={category}
-            id={`cat-${category}`}
-            checked={categories.includes(category)}
-            onChange={(e) => {
-              if (e.target.checked) {
-                setCategories([...categories, e.target.value]);
-              } else {
-                setCategories(categories.filter((c) => c !== e.target.value));
-              }
-            }}
-          />
-        </span>
-      ))}
-    </div>
-  );
 
+  const categoryFilter = (
+    <Filter
+      data={data}
+      values={categories}
+      setValues={setCategories}
+      setFilteredData={setFilteredData}
+    />
+  );
   const transformedData = {
     labels: filteredData.map((d) => d.date),
     datasets: [
